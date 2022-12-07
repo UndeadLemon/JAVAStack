@@ -19,11 +19,24 @@
 <body>
 <h1> Fruit Store</h1>
 
-<ul class="list-group table-striped">
+<table class="table table-striped">
+<thead>
+<tr>
+<th scope="col">Fruit</th>
+<th scope="col">Price</th>
+</tr>
+</thead>
+<tbody>
 <c:forEach var="fruit" items = "${fruits}">
-<li class="list-group-item"><c:out value="${fruit.name}"></c:out>: <c:out value="${fruit.price}"/></li>
+<tr>
+<td><c:out value="${fruit.name}"></c:out></td>
+<td><c:out value="${fruit.price}"/></td>
+</tr>
 </c:forEach>
-</ul>
+
+
+</tbody>
+</table>
 
 </body>
 </html>
