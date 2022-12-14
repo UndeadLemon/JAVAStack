@@ -33,8 +33,9 @@ public class ExpenseController {
 		return "dashboard.jsp";
 	}
 	@PostMapping("/process")
-	public String processExpenses(@Valid @ModelAttribute("expense") Expense expense, BindingResult result) {
+	public String processExpenses(@Valid @ModelAttribute("expense") Expense expense, BindingResult result, Model model) {
 		if(result.hasErrors()) {
+			model.addAttribute("allExpenses", expenseServ.getAll());
 			return "dashboard.jsp";
 		} else {
 			expenseServ.create(expense);
@@ -57,6 +58,7 @@ public class ExpenseController {
 	@PutMapping(value="/{id}")
 	public String updateExpense(@Valid @ModelAttribute("expense") Expense expense, BindingResult result) {
 		if (result.hasErrors()) {
+			
 			return "edit.jsp";
 		}
 		else {
